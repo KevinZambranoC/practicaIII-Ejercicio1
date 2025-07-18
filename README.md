@@ -1,52 +1,33 @@
-# Astro Starter Kit: Basics
+# 🕵️‍♂️ Detección de Minas Subterráneas - practicaIII-Ejercicio1
 
-```sh
-npm create astro@latest -- --template basics
-```
+Este proyecto web te permite descubrir "minas" ocultas bajo la superficie, analizando mapas digitales de densidad con una visualización interactiva y moderna.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 🚀 Descripción
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+A través de una interfaz desarrollada en **Astro** y **JavaScript**, y usando **TailwindCSS** para estilos, puedes cargar o introducir matrices de densidad del subsuelo, ejecutar el algoritmo de detección y visualizar las zonas potencialmente minadas.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## ⚙️ Tecnologías principales
 
-## 🚀 Project Structure
+- **Astro** (estructura y rendering)
+- **JavaScript** (lógica de análisis y detección)
+- **TailwindCSS** (estilos modernos y responsivos)
+- **CSS** (global.css para ajustes adicionales)
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🧩 Estructura del proyecto
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+- `/public/scripts/`: imágenes y archivos de apoyo
+- `/src/components/`: componentes reutilizables (como navbar)
+- `/src/layouts/`: layout general de la web
+- `/src/pages/index.astro`: página principal
+- `/src/styles/global.css`: estilos globales opcionales
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 💻 ¿Cómo usarlo?
 
-## 🧞 Commands
+1. Clona el repo y ejecuta el entorno Astro localmente.
+2. Sube o introduce tu matriz de densidad desde la interfaz web.
+3. Presiona el botón para detectar minas y visualiza el resultado, donde cada mina se marca con un asterisco (`*`), usando un diseño claro y profesional gracias a Tailwind.
 
-All commands are run from the root of the project, from a terminal:
+## 🏷️ Ejemplo de entrada y salida
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+**Entrada (`minas.in`, `minas.txt`):**
+**Salida ( `minas.out`):**
