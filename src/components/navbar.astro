@@ -1,0 +1,70 @@
+---
+// Aquí tengo el menú de la navbars
+const navLinks = [
+  { text: "Inicio", href: "/" },
+  { text: "Instrucciones", href: "/instrucciones" },
+  { text: "Detección de Minas Subterráneas", href: "/deteccion-minas-subterraneas" }
+];
+---
+
+<!-- Esta es la barra de arriba, siempre visible y transparente porque así se ve más cool -->
+<header class="absolute top-0 
+left-0 z-20 flex w-full items-start 
+justify-between px-6 py-4">
+  <!-- Aquí va el logo  -->
+  <img src="../../public/logo.png"  alt="Logo" class="h-6 w-auto" />
+
+  <!-- El botoncito del menú -->
+  <button id="menuBtn" 
+  class="h-5 w-5">
+    <img src="../../public/menu.png" 
+    alt="Open menu" 
+    class="h-full 
+    w-full" />
+  </button>
+</header>
+
+<!-- El panel lateral que se desliza -->
+<aside
+  id="menuPanel"
+  class="fixed inset-y-0 right-0 
+  z-30 flex translate-x-full 
+  flex-col
+         bg-white p-8 text-gray-900 
+         transition-transform duration-500 ease-in-out
+         w-full            
+         sm:w-3/4          
+         md:w-1/3          
+         lg:w-1/4"         
+>
+  <!-- Botón para cerrar el panel (la X que nunca puede faltar) -->
+  <button id="closeBtn" class="h-5 
+  w-5 
+  self-start">
+    <img src="../../public/x.png" alt="Close menu" class="h-full w-full" />
+  </button>
+
+  <!-- Aquí están los links, recorro el array navLinks  -->
+  <nav class="mt-16 space-y-6 
+  text-2xl font-medium">
+    {navLinks.map(({ text, href }) => (
+      // Un link por cada opción
+      <a href={href} class="block hover:text-sky-600">{text}</a>
+    ))}
+  </nav>
+</aside>
+
+<script is:inline>
+  // JS sencillito pa' abrir y cerrar el panel. 
+  const menuBtn  = document.getElementById('menuBtn');
+  const closeBtn = document.getElementById('closeBtn');
+  const panel    = document.getElementById('menuPanel');
+
+  // Si le das al menú, abro el panel 
+  menuBtn?.addEventListener('click', () => panel?.classList.remove('translate-x-full'));
+
+  // Y si le das a la X, lo cierro de nuevo 
+  closeBtn?.addEventListener('click', () => panel?.classList.add('translate-x-full'));
+</script>
+
+

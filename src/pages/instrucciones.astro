@@ -1,0 +1,85 @@
+---
+// imports que necesito para esta pagina
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/navbar.astro";
+import elvideo from "../assets/main.mp4";
+import "../styles/global.css";   /* aqui los estilos globales */
+
+// estos son los pasos que escribi para las instrucciones
+const steps = [
+  {
+    num: 1,
+    desc: "Descarga el archivo de datos que contiene la matriz de densidad del subsuelo."
+  },
+  {
+    num: 2,
+    desc: "Carga la matriz en la herramienta de análisis y establece el umbral de densidad."
+  },
+  {
+    num: 3,
+    desc: "Ejecuta el algoritmo de detección para resaltar las celdas de alta densidad."
+  },
+  {
+    num: 4,
+    desc: "Exporta el mapa de densidad de minas resultante para el equipo de ingeniería."
+  }
+];
+---
+
+<Layout>
+  <!-- el mismo video de fondo que use en la otra pagina -->
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    class="absolute inset-0 h-full w-full object-cover"
+  >
+    <source src={elvideo} type="video/mp4" />
+  </video>
+  
+  <!-- capa oscura para q se lea bien -->
+  <div class="absolute inset-0 bg-black/40">
+  </div>
+
+  <!-- todo el contenido visible -->
+  <div class="relative z-10 flex min-h-screen flex-col text-white">
+    <NavBar />
+
+    <!-- contenedor principal lo centre para q se vea bien -->
+    <main
+      class="flex flex-1 flex-col items-center justify-center px-2 sm:px-6 mt-24 md:mt-0 pb-8"
+    >
+      <!-- esta caja la hice con blur para q se viera moderna -->
+      <div
+        class="w-[95vw] max-w-[20rem] sm:w-full sm:max-w-md lg:max-w-xl rounded-xl bg-white/20 backdrop-blur-md p-4 sm:p-8 overflow-auto max-h-[80vh]"
+      >
+        <!-- titulo de las instrucciones -->
+        <h1
+          class="mb-6 text-center font-extrabold text-xl sm:text-3xl md:text-4xl"
+        >
+          Instrucciones
+        </h1>
+
+        <!-- lista de pasos ordenada -->
+        <ol
+          class="list-decimal list-inside space-y-4 text-sm sm:text-lg"
+        >
+          {steps.map(({ num, desc }) => (
+            <li class="leading-relaxed">
+              {desc}
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- boton para continuar -->
+      <a
+        href="/deteccion-minas-subterraneas"
+        class="mt-4 sm:mt-6 rounded-full bg-white px-8 py-2 text-sm sm:text-base font-semibold text-black hover:bg-slate-100 transition"
+      >
+        Continuar
+      </a>
+    </main>
+  </div>
+</Layout>

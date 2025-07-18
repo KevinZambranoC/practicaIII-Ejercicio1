@@ -1,0 +1,203 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/navbar.astro";
+import elvideo from "../assets/main.mp4";
+import "../styles/global.css";
+// const prueba = "esto era para debug, después lo borro";
+---
+
+<Layout>
+  <!-- el mismo video de fondo que use en la otra pagina -->
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    class="fixed inset-0 h-full w-full object-cover"
+  >
+    <source src={elvideo} type="video/mp4" />
+  </video>
+  <div class="fixed inset-0
+   bg-black/40"></div>
+  
+  <!-- contendor principal :D -->
+  <div class="relative z-10 
+  flex min-h-screen flex-col 
+  items-center text-white">
+    <NavBar />
+
+    <!-- sección principal donde el usuario carga su archivo -->
+    <!-- backdrop-blur para el efecto glass queda bello -->
+    <section
+      class="
+        mt-24
+        w-[90vw]
+        max-w-[350px]
+        sm:w-full
+        sm:max-w-lg
+        lg:max-w-3xl
+        mx-auto
+        px-2
+        sm:px-4
+        lg:px-8
+        rounded-xl
+        bg-white/20
+        backdrop-blur-md
+        p-4
+        sm:p-6
+        lg:p-8
+        text-white
+        shadow-lg
+      "
+    >
+      <!-- título de sube tu archiv :D -->
+      <h2 class="mb-4 
+                 text-base sm:text-xl md:text-2xl 
+                 font-bold text-center">
+        Sube tu archivo <span class="font-mono">.IN</span> o <span class="font-mono">.TXT</span> 🚀
+      </h2>
+
+      <!-- textarea editable :D -->
+      <textarea
+        id="inputArea"
+        rows="6"
+        class="
+          w-full
+          h-40
+          sm:h-52
+          md:h-64
+          rounded-lg
+          border border-gray-300
+          bg-white/50
+          p-2
+          sm:p-3
+          text-sm sm:text-base
+          placeholder-gray-600
+          resize-none
+          focus:outline-none focus:ring-2 focus:ring-white/50
+        "
+        placeholder="Escribe aquí, o carga el archivo (si no pasa nada, avísame jaja)"
+      ></textarea>
+
+      <!-- botones en grid; los ID y textos :D -->
+      <div class="mt-4 sm:mt-6 
+      grid grid-cols-1 gap-3 
+      sm:grid-cols-3">
+        <button
+          id="abrirArchivo"
+          class="w-full px-3 sm:px-4 py-2 text-sm 
+          sm:text-base rounded-full bg-white/60 
+          hover:bg-white/80 transition"
+        >
+          Abrir archivo 
+        </button>
+        <button
+          id="btnLimpiar"
+          class="w-full px-3 sm:px-4 
+          py-2 text-sm sm:text-base rounded-full bg-white/60 
+          hover:bg-white/80 transition"
+        >
+          Limpiar todo 🧹
+        </button>
+        <button
+          id="botonMagico"
+          class="w-full px-3 sm:px-4 
+          py-2 text-sm sm:text-base rounded-full 
+          bg-white/60 hover:bg-white/80 transition"
+        >
+          ¡Procesar ahora!
+        </button>
+      </div>
+
+      <!-- input oculto solo para cargar archivos, ni idea si te lo muestro después -->
+      <input id="inputArchivo" type="file" accept=".in,.txt" class="hidden" />
+    </section>
+
+    <!-- resultados: aparece después de ejecutar (si no lo ves, revisa el JS) -->
+    <div id="resultWrapper" class="mt-16 w-full hidden">
+  <section
+    id="resultSection"
+    class="
+      mx-auto
+      w-[95vw] max-w-[300px]
+      sm:w-[90vw] sm:max-w-[350px]
+      md:max-w-xl md:p-6
+      lg:max-w-3xl lg:p-8
+      rounded-xl bg-white/20 backdrop-blur-md
+      p-2 sm:p-4
+      text-white shadow-lg
+    "
+  >
+    <!-- título resultados -->
+    <h2 class="
+      mb-2 sm:mb-4 text-center 
+      text-base sm:text-xl md:text-2xl lg:text-2xl 
+      font-bold
+    ">
+      RESULTADOS 🤓
+    </h2>
+
+    <!-- aquí va el grid de resultados -->
+    <div
+      id="gridArea"
+      class="
+        grid
+        gap-1 sm:gap-2 md:gap-4
+        font-mono
+        text-xs sm:text-sm md:text-base
+        text-center
+      "
+    ></div>
+  </section>
+
+  <!-- aqui tengo botones -->
+  <div
+    class="
+      mt-4 sm:mt-6 mb-12
+      w-[95vw] max-w-[300px]
+      sm:w-[90vw] sm:max-w-[350px]
+      md:max-w-xl
+      lg:max-w-3xl
+      mx-auto
+      flex flex-col sm:flex-row md:flex-row justify-center gap-2 sm:gap-4 md:gap-6
+    "
+  >
+    <a
+      id="volverBtn"
+      href="/"
+      class="w-full 
+      sm:w-auto px-2 py-1 sm:px-4 sm:py-2 
+      md:px-6 md:py-3 text-xs sm:text-sm md:text-base rounded-full bg-white/60 hover:bg-white/80 text-center"
+    >
+      Volver 
+    </a>
+    <a
+      id="descargarBtn"
+      download="minas.out"
+      class="hidden w-full 
+      sm:w-auto px-2 py-1 sm:px-4 sm:py-2 
+      md:px-6 md:py-3 text-xs sm:text-sm md:text-base rounded-full bg-white/60 hover:bg-white/80 text-center"
+      href="#"
+    >
+      Descargar resultado 
+    </a>
+  </div>
+</div>
+
+  <!-- aquí importé el script, lo dejo al final por costumbre -->
+  <script type="module">
+    import { setupRouteDetection } from '/scripts/routes.js';
+    setupRouteDetection();
+    // console.log("esto era para debug, lo dejo por si acaso");
+  </script>
+</Layout>
+
+
+
+
+
+
+
+
+
+

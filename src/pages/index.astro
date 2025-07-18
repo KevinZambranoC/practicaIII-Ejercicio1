@@ -1,0 +1,71 @@
+---
+// Aqui importo todo lo que necesito para la pagina
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/navbar.astro";
+import elvideo from "../assets/main.mp4";
+import "../styles/global.css";
+---
+
+<Layout>
+ <!-- me decidi por poner este video porque queria que se viera mas dinamico -->
+ <video 
+ autoplay 
+ muted 
+ loop 
+ playsinline 
+ class="absolute inset-0 h-full w-full object-cover"
+ >
+ <source src={elvideo} type="video/mp4" />
+ </video>
+ 
+ <!-- necesitaba esta capa para que no se perdiera el texto con el video -->
+ <div class="absolute inset-0 bg-black/40">
+ </div>
+ 
+ <!-- aqui va tod el contenido q se ve -->
+ <div class="relative z-10 flex min-h-screen flex-col text-white">
+ 
+ <NavBar />
+ 
+ <!-- aqui lo q realice fue el contenedor principal dond coloque todo el contenido -->
+ <main class="flex flex-1 items-center justify-center md:justify-start px-4 sm:px-8 md:px-20 pt-24 sm:pt-12 md:pt-0">
+ 
+ <!-- aqui tuve que ajustar estos margenes varias veces hasta que funcionara en movil -->
+ <div class="mx-auto md:mx-0 w-[95vw] max-w-[20rem] sm:w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl px-2 sm:px-6 md:px-10">
+ 
+ <!-- El titulo lo hice grande para que llamara la atencion -->
+ <h1 class="mb-4 text-xl sm:text-2xl md:text-4xl lg:text-5xl font-extrabold leading-snug text-center sm:text-left">
+ Detección de Minas Subterráneas
+ <br class="hidden sm:block" />
+ Análisis de Densidad
+ </h1>
+ 
+ <!-- Escribi esta descripcion tratando de que fuera clara pero tecnica -->
+ <p class="mt-2 sm:mt-4 text-xs sm:text-base md:text-lg lg:text-xt text-center sm:text-left leading-relaxed">
+ Este problema simula un sistema geológico que 
+ identifica minas bajo tierra usando datos de 
+ densidad del subsuelo. La entrada es una matriz 
+ de valores de densidad del terreno. Se marca una 
+ celda como mina si su valor más el promedio de sus 
+ vecinas supera un umbral. La salida resalta las zonas 
+ de alta densidad en un formato matricial estructurado.
+ Avanza a la guía de instrucciones.
+ </p>
+ 
+ <!-- Quise que el boton se viera profesional pero accesible -->
+ <div class="mt-4 sm:mt-6 flex justify-center sm:justify-start">
+ <a 
+ href="/instrucciones" 
+ class="rounded-full bg-white px-4 sm:px-8 py-2 text-xs sm:text-sm font-semibold uppercase tracking-wider text-black hover:bg-slate-100 transition"
+ >
+ Continuar
+ </a>
+ </div>
+ 
+ </div>
+ </main>
+ </div>
+</Layout>
+
+
+
